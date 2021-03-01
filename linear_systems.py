@@ -22,12 +22,3 @@ def gauss_seidel(a, b, x0=None, eps=EPSILON, max_iteration=25):
             return x1 
         x0 = x1[:]    
     raise ValueError('Solution does not converge')
-
-                       
-a = [[4, 1, 2],
-    [3, 5, 1],
-    [1, 1, 3]] 
-
-b = [4, 7, 3]
-
-print(gauss_seidel(a, b))

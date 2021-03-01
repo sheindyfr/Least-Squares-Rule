@@ -1,4 +1,5 @@
 import math
+EPSILON = 1e-6
 
 # ------------------------------------------------------------
 # Calculate numerical integration for f(x) using trapezoids
@@ -35,12 +36,15 @@ def simpson_rule(f, a, b, n=100):
 
     return s * h / 3
 
-
-EPSILON = 1e-6
-a = -10
-b = 10
-n = 100
-f = lambda x : math.exp(-x**2)
-
-print(trapezoid_rule(f, a, b))
-print(simpson_rule(f, a, b))
+# ------------------------------------------------------------
+# Calculate inner product f(x) using Simpson/Trapezoid
+# @params:  f =>    the function to be integrated
+#           deg =>  degree of integration (1-Trapezoid, 2-Simpson)
+#           n =>    number of subintervals (must be even)   
+#           a, b => interval bounds
+# ------------------------------------------------------------
+def inner_product(f, a, b, deg=2, n=100):
+    if deg == 1:
+        return trapezoid_rule(f, a, b, n)
+    elif deg == 2:
+        return simpson_rule(f, a, b, n)
