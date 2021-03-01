@@ -1,12 +1,16 @@
-def gauss_seidel(a, b, x0=None, eps=1e-5, max_iteration=25):
-    """
-    m  : list of list of floats : coefficient matrix
-    x0 : list of floats : initial guess
-    eps: float : error tolerance
-    max_iteration: int
-    """
+EPSILON = 1e-6
+
+# ------------------------------------------------------------
+# Approximate solution of linear system of equation,
+# using Gauss-Seidel rule
+# @params:  a =>    given coefficient matrix
+#           b =>    independent coefficient vector 
+#           x0 =>   initial solution vector
+#           eps =>  error tolerance
+# ------------------------------------------------------------
+def gauss_seidel(a, b, x0=None, eps=EPSILON, max_iteration=25):
+
     n  = len(a)
-    print(n)
     x0 = [0] * n if x0 == None else x0
     x1 = x0[:]
 
@@ -18,5 +22,12 @@ def gauss_seidel(a, b, x0=None, eps=1e-5, max_iteration=25):
             return x1 
         x0 = x1[:]    
     raise ValueError('Solution does not converge')
+
+                       
+a = [[4, 1, 2],
+    [3, 5, 1],
+    [1, 1, 3]] 
+
+b = [4, 7, 3]
 
 print(gauss_seidel(a, b))

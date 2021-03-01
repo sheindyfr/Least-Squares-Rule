@@ -6,7 +6,7 @@ import math
 #           n =>    number of trapezoids   
 #           a, b => interval bounds
 # ------------------------------------------------------------
-def trapezoid_rule(f, n, a, b):
+def trapezoid_rule(f, a, b, n=100):
     h = (b - a) / float(n)
     integral = 0.5 * h * (f(a) + f(b))
 
@@ -21,7 +21,7 @@ def trapezoid_rule(f, n, a, b):
 #           n =>    number of subintervals (must be even)   
 #           a, b => interval bounds
 # ------------------------------------------------------------
-def simpson_rule(f, n, a, b):
+def simpson_rule(f, a, b, n=100):
     if n % 2:
         raise ValueError("n must be even (received n=%d)" % n)
 
@@ -42,5 +42,5 @@ b = 10
 n = 100
 f = lambda x : math.exp(-x**2)
 
-print(trapezoid_rule(f, n, a, b))
-print(simpson_rule(f, n, a, b))
+print(trapezoid_rule(f, a, b))
+print(simpson_rule(f, a, b))
