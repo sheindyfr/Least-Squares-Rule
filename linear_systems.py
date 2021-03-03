@@ -9,7 +9,7 @@ EPSILON = 1e-6
 #           eps =>  error tolerance
 # ------------------------------------------------------------
 def gauss_seidel(a, b, x0=None, eps=EPSILON, max_iteration=25):
-
+    print_data(a, b)
     n  = len(a)
     x0 = [0] * n if x0 == None else x0
     x1 = x0[:]
@@ -22,3 +22,23 @@ def gauss_seidel(a, b, x0=None, eps=EPSILON, max_iteration=25):
             return x1 
         x0 = x1[:]    
     raise ValueError('Solution does not converge')
+
+# ------------------------------------------------------------
+# Print the participants of the linear system
+# @params:  a =>    given coefficient matrix
+#           b =>    independent coefficient vector
+# ------------------------------------------------------------
+def print_data(a, b):
+    print('\n----===[ A ]===----\n')
+    for i in a:
+        print('\t\t'.join(map(str, i)))
+    
+    print('\n----===[ b ]===----\n')
+    for i in b:
+        print(i)
+
+    print('\n----===[ linear system ]===----\n')
+    for i in range(len(a)):
+        for j in range(len(a[i])):
+            print(f'{a[i][j]} * x{j} +', end=" ")
+        print(f'= {b[i]}')
