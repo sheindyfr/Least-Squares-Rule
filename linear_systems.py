@@ -1,4 +1,5 @@
-EPSILON = 1e-6
+import numpy as np
+EPSILON = 1e-8
 
 # ------------------------------------------------------------
 # Approximate solution of linear system of equation,

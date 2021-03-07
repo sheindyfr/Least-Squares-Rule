@@ -3,7 +3,7 @@
 Description: running several examples of approximating a
              function in an interval by a function basis
              1) Fourier serias
-             2) Polynomial serias
+             2) any basis
 
 Authors: Ayala Barazani & Sheindy Frenkel
 Date: 09/03/2021
@@ -21,15 +21,25 @@ from least_squares import *
 import matplotlib.pyplot as plt 
 import numpy as np 
 
-def create_basis():
+def create_fourier_basis():
     # Fourier serias
     a1 = lambda x: 1/math.sqrt(2*math.pi)
     a2 = lambda x: (1/math.sqrt(math.pi))*math.cos(x)
     a3 = lambda x: (1/math.sqrt(math.pi))*math.sin(x)
     return [a1, a2, a3]
 
-def create_func():
-    f = lambda x: abs(x)
+def create_basis():
+    a1 = lambda x: 1
+    a2 = lambda x: math.cos(x)
+    a3 = lambda x: math.sin(x)
+    return [a1, a2, a3]
+
+def create_func1():
+    f = lambda t: abs(t)
+    return f 
+
+def create_func2():
+    f = lambda t: t**2
     return f 
 
 def get_approx_func(basis, coefficient):
@@ -53,8 +63,17 @@ def plot_graphs(f, ff):
 
 
 if __name__ == "__main__":
-    basis = create_basis()
-    f = create_func()
+    basis = create_fourier_basis()
+    f = create_func1()
     coefficients, error = least_squares(basis, f, -math.pi, math.pi)
+    print(f'\nERROR: {error:.5f}')
+    ff = get_approx_func(basis, coefficients)
+    plot_graphs(f, ff)
+
+
+    basis = create_basis()
+    f = create_func2()
+    coefficients, error = least_squares(basis, f, -math.pi, math.pi)
+    print(f'\nERROR: {error:.5f}')
     ff = get_approx_func(basis, coefficients)
     plot_graphs(f, ff)
