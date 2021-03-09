@@ -2,15 +2,7 @@
 Approximate a given function by base-function list using least squares, gauss-seidel and simpson rules
 
 ### Fourier serial as an example
-
-
-$ \phi1 = 1/{}\sqrt{(2\pi)} $
-
-$ \phi2 = (1/\sqrt{(\pi)})*\cos(x) $
-
-$ \phi3 = (1/\sqrt{(\pi)})*\sin(x) $
-
-$ f = |x| $
+![](fourier.png)
 
 ### Results:
 ```
