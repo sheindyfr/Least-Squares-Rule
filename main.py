@@ -25,13 +25,13 @@ def create_fourier_basis():
     # Fourier serias
     a1 = lambda x: 1/math.sqrt(2*math.pi)
     a2 = lambda x: (1/math.sqrt(math.pi))*math.cos(x)
-    a3 = lambda x: (1/math.sqrt(math.pi))*math.sin(x)
+    a3 = lambda x: (1/math.sqrt(math.pi))*math.cos(3*x)
     return [a1, a2, a3]
 
 def create_basis():
     a1 = lambda x: 1
     a2 = lambda x: math.cos(x)
-    a3 = lambda x: math.sin(x)
+    a3 = lambda x: math.cos(3*x)
     return [a1, a2, a3]
 
 def create_func1():
@@ -39,7 +39,7 @@ def create_func1():
     return f 
 
 def create_func2():
-    f = lambda t: t**2
+    f = lambda t: t**2 + abs(t)
     return f 
 
 def get_approx_func(basis, coefficient):
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     basis = create_fourier_basis()
     f = create_func1()
     coefficients, error = least_squares(basis, f, -math.pi, math.pi)
-    print(f'\nERROR: {error:.5f}')
+    print(f'\nERROR: {error}')
     ff = get_approx_func(basis, coefficients)
     plot_graphs(f, ff)
 
@@ -74,6 +74,6 @@ if __name__ == "__main__":
     basis = create_basis()
     f = create_func2()
     coefficients, error = least_squares(basis, f, -math.pi, math.pi)
-    print(f'\nERROR: {error:.5f}')
+    print(f'\nERROR: {error}')
     ff = get_approx_func(basis, coefficients)
     plot_graphs(f, ff)

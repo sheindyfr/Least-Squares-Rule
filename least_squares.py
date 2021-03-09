@@ -1,5 +1,6 @@
 from linear_systems import *
 from numerical_integration import *
+import scipy.integrate as integrate
 
 # ------------------------------------------------------------
 # Approximate function by basis, using least squared rule
@@ -61,4 +62,4 @@ def calculate_approximate(t, basis, x0):
 def calculate_error(f, ff, a, b):
     g = lambda x: f(x) - ff(x)
     gg = lambda x: g(x) * g(x)
-    return math.sqrt(inner_product(gg, a, b)) # [integral((f-ff)**2)]**0.5
+    return math.sqrt(integrate.quad(gg, a, b)[0]) # [integral((f-ff)**2)]**0.5
