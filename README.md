@@ -2,7 +2,7 @@
 Approximate a given function by base-function list using least squares, gauss-seidel and simpson rules
 
 ### Fourier serial as an example
-![](fourier.png)
+![](fourier.PNG)
 
 ### Results:
 ```
