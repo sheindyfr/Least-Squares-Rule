@@ -25,7 +25,7 @@ def create_fourier_basis():
     # Fourier serias
     a1 = lambda x: 1/math.sqrt(2*math.pi)
     a2 = lambda x: (1/math.sqrt(math.pi))*math.cos(x)
-    a3 = lambda x: (1/math.sqrt(math.pi))*math.cos(3*x)
+    a3 = lambda x: (1/math.sqrt(math.pi))*math.cos(x)
     return [a1, a2, a3]
 
 def create_basis():
